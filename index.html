@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description"
+      content="Zoek heerlijke recepten via TheMealDB API. Sla favorieten op en bekijk gedetailleerde bereidingswijzen.">
+   <title>RecipeZoeker – Ontdek Recepten</title>
+
+   <!-- Eigen stylesheet -->
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+   <!-- ===== HEADER ===== -->
+   <header class="site-header">
+      <div class="header-inner">
+         <h1 class="logo">🍽️ RecipeZoeker</h1>
+         <p class="tagline">Ontdek duizenden recepten van over de hele wereld</p>
+      </div>
+   </header>
+
+   <!-- ===== ZOEKBALK ===== -->
+   <section class="search-section" aria-label="Zoekformulier">
+      <div class="container">
+         <form id="search-form" class="search-form" role="search">
+            <input type="text" id="search-input" class="search-input"
+               placeholder="Zoek een recept... bijv. pasta, chicken, sushi" aria-label="Zoektermen invoeren"
+               autocomplete="off">
+            <button type="submit" id="search-btn" class="btn btn-primary" aria-label="Zoeken">
+               🔍 Zoeken
+            </button>
+         </form>
+      </div>
+   </section>
+
+   <!-- ===== HOOFDINHOUD ===== -->
+   <main class="main-content" id="main-content">
+      <div class="container">
+
+         <!-- Foutmelding (verborgen standaard) -->
+         <div id="error-message" class="error-message hidden" role="alert" aria-live="polite"></div>
+
+         <!-- Laadspinner (verborgen standaard) -->
+         <div id="loading-spinner" class="loading-spinner hidden" aria-label="Laden..." role="status">
+            <div class="spinner"></div>
+            <p>Recepten laden...</p>
+         </div>
+
+         <!-- ===== FAVORIETEN SECTIE ===== -->
+         <section id="favorites-section" class="favorites-section" aria-label="Favoriete recepten">
+            <h2 class="section-title">⭐ Mijn Favorieten</h2>
+            <!-- Bericht als er geen favorieten zijn -->
+            <p id="no-favorites-msg" class="no-favorites-msg">
+               Nog geen favorieten. Klik op de ster ☆ bij een recept om het toe te voegen!
+            </p>
+            <!-- Grid van favoriete receptkaarten -->
+            <div id="favorites-grid" class="recipe-grid" aria-live="polite"></div>
+         </section>
+
+         <!-- Scheidingslijn tussen favorieten en zoekresultaten -->
+         <hr class="section-divider" id="results-divider">
+
+         <!-- ===== ZOEKRESULTATEN SECTIE ===== -->
+         <section id="results-section" class="results-section" aria-label="Zoekresultaten">
+            <h2 id="results-title" class="section-title hidden">🔎 Zoekresultaten</h2>
+            <!-- Grid van gevonden receptkaarten (max 20) -->
+            <div id="results-grid" class="recipe-grid" aria-live="polite"></div>
+         </section>
+
+      </div>
+   </main>
+
+   <!-- ===== DETAIL OVERLAY (Fullscreen recept detail) ===== -->
+   <!--
+        Deze overlay wordt zichtbaar als de gebruiker op "Meer details" klikt.
+        Het bevat alle informatie van het geselecteerde recept.
+    -->
+   <div id="detail-overlay" class="detail-overlay hidden" role="dialog" aria-modal="true" aria-label="Recept detail">
+
+      <!-- Terug-knop linksboven -->
+      <button id="back-btn" class="back-btn" aria-label="Terug naar zoekresultaten">
+         ← Terug
+      </button>
+
+      <!-- Inhoud van het detailvenster (wordt dynamisch ingevuld via JS) -->
+      <div id="detail-content" class="detail-content">
+         <!-- Dynamisch gevuld door app.js -->
+      </div>
+
+   </div>
+
+   <!-- ===== FOOTER ===== -->
+   <footer class="site-footer">
+      <div class="container">
+         <p>Data afkomstig van <a href="https://www.themealdb.com" target="_blank" rel="noopener">TheMealDB</a> &mdash;
+            Gratis recept API</p>
+         <p>Gemaakt door een student Odisee Toegepaste Informatica</p>
+      </div>
+   </footer>
+
+   <!-- Eigen JavaScript (geladen als module) -->
+   <script src="js/app.js" type="module"></script>
+
+</body>
+
+</html>
